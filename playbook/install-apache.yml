@@ -1,0 +1,21 @@
+---
+ - name: "playbook apache"
+   hosts: host
+   become: yes
+   tasks:
+     - name: "install apache"
+       apt:
+           name: apache2
+           state: present
+     - name: "demarrage service apache"
+       service:
+           name: apache2
+           state: restarted
+           enabled: yes
+     - name: copie de fichier
+       copy:
+           src: "test.html"
+           dest: "/var/www/html"
+           owner: vagrant
+           group: vagrant     
+      
