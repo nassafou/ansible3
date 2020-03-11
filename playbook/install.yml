@@ -1,0 +1,15 @@
+---
+ - name: "playbook apache"
+   hosts: inventaire
+   become: yes
+   tasks:
+     - name: "install apache"
+       apt:
+           name: apache2
+           state: present
+
+
+
+
+
+

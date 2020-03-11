@@ -1,0 +1,43 @@
+---
+ - name: "playbook apache"
+   hosts: inventaire
+   become: yes
+   tasks:
+     - name: "install apache"
+       apt:
+           name: apache2
+           state: present
+     - name: "apache configuration"
+       template:
+           src: "inventory.conf.j2"
+           dest: "/etc/apache2/sites-available/inventory.conf"
+           owner: vagrant
+           group: vagrant
+
+    # register execution result for template creation
+       register: apache_conf
+    # Instruction permettant de scruter le contenu de la variable
+     - debug: var=apache_conf
+     - name: "Restart apache service"
+       service: 
+           name: "apache2"
+           state: "restarted"
+       # restart if necessary
+       when: apache_conf.changed
+     - name: "Start apache service" 
+       service:
+           name: "apache2"
+           state: "started"
+           enabled: yes
+
+
+
+
+
+
+
+
+
+
+
+      

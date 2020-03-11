@@ -14,12 +14,15 @@
            owner: vagrant
            group: vagrant
 
-     - name: "demarrage service apache"
-       service:
-           name: apache2
-           state: restarted
-           enabled: yes
-       tags: [ "restart"]
+    # register execution result for template creation
+       register: apache_conf
+    # Instruction permettant de scruter le contenu de la variable
+     - debug: var=apache_conf
+
+
+
+
+
 
 
 

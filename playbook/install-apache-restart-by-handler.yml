@@ -1,7 +1,11 @@
 ---
  - name: "playbook apache"
    hosts: inventaire
-   become: yes
+   handlers:
+     - name: "Restart apache service"
+       service:
+           name: "apache2"
+           state: "restarted"
    tasks:
      - name: "install apache"
        apt:
@@ -14,12 +18,18 @@
            owner: vagrant
            group: vagrant
 
-     - name: "demarrage service apache"
+    # Notify Apache restart handler
+       notify: [ "Restart apache service" ]
+     - name: "Start apache service" 
        service:
-           name: apache2
-           state: restarted
+           name: "apache2"
+           state: "started"
            enabled: yes
-       tags: [ "restart"]
+
+
+
+
+
 
 
 
