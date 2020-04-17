@@ -1,0 +1,30 @@
+---
+ - name: Installation des serveurs
+   hosts: web
+   remote_user: vagrant
+   vars:
+     user: bob
+
+
+   tasks:
+     - name: Installation de git
+       become: yes
+       apt: name={{ item }}  state=latest
+       with_items:
+         - git
+         - vim
+         - htop
+         - zsh 
+
+     - name: Création d'un utilisateur
+       when: user is defined
+       become: yes
+       user: name={{ user }} comment="le user" shell=/usr/bin/zsh
+     - name: Ajout de la clef SSH
+       when: user is defined
+       become: yes
+       authorized_key: user={{ user }} key="{{lookup('file','~/.ssh/id_rsa.pub' )}}"
+     - name: devient sudoers
+       become: yes
+       when: user is defined 
+       template: src=templates/sudoers.j2 dest=/etc/sudoers.d/{{ user }}-sudoer validate='visudo -cf %s'     
