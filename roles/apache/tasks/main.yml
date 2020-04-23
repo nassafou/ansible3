@@ -1,0 +1,13 @@
+---
+# - name: "Apache installation"
+#   hosts: apache
+#   tasks:
+     - name: "Install package apache"
+       yum: name="httpd" state="present"
+     - name: "Start apache service"
+       service:  name="httpd"  state="started"  enabled=yes
+     - name: "Copy test.html"
+       copy: src="test.html"  dest="/var/www/html" owner="apache" group="apache"
+#     - name: "install vim"
+#       yum: name="vim" 
+     

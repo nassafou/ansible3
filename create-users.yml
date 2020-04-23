@@ -1,0 +1,10 @@
+---
+ - name: Create New Users
+   hosts: apache
+   tasks:
+     - name: Create Users Tasks
+       user:
+         name: bob
+	 state: present
+	 password: "{{ defaut_user_password | password_hash('sha512', 'A512') }}"
+	 shell: /bin/sh

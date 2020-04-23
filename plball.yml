@@ -1,0 +1,11 @@
+---
+ - name: "Install all"
+   hosts: mysql 
+   remote_user: vagrant
+#   gather_facts: no
+#   vars:
+#     - user: vagrant
+   roles:
+#     - user
+     - mariadb
+

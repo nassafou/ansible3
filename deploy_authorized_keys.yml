@@ -1,0 +1,27 @@
+---
+ - hosts: all
+   gather_facts: no
+#   vars:
+#     user: vagrant
+   tasks:
+     - name: "install sudo"
+       yum:
+         name: sudo
+         state: present
+     - name: "make directory"
+       file: 
+         path: "/home/vagrant/.ssh" 
+         state: "directory"
+     - name: "create empty file"
+       file: 
+#         when: is defined
+         path: "/home/vagrant/.ssh/authorized_keys"
+         state: touch
+     - name: "Authorized_keys"
+       become: yes
+       authorized_key:
+         user: vagrant
+         state: present
+         key: "{{ lookup('file','/home/vagrant/.ssh/id_rsa.pub') }}"
+
+     
