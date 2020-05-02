@@ -9,6 +9,7 @@ mysql1
 
 [haproxy]
 haproxy1
+haproxy2
 
 [haproxy:vars]
 docker_image="custom-ubuntu"

@@ -1,6 +1,8 @@
 ---
  - name: Create New Users
    hosts: apache
+   vars:
+     password: gnulinux
    tasks:
      - name: Create Users Tasks
        user:
