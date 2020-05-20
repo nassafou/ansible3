@@ -1,0 +1,7 @@
+---
+ - name: "Install mariadb"
+   hosts: mysql
+   remote_user: root
+   gather_facts: no
+   roles:
+     - role: "mariadb"

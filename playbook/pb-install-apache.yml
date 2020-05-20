@@ -1,0 +1,41 @@
+---
+ - name: "playbook apache"
+   hosts: apache
+   gather_facts: no
+   remote_user: root
+   roles:
+     - role: apache
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

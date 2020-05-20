@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+  tasks:
+    - shell: ls /does/not/exist
+    - shell: echo {{undefined}}

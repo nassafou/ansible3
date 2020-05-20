@@ -1,0 +1,51 @@
+---
+
+
+
+
+     - name: "install apache"
+       yum:
+           name: httpd
+           state: present
+     - name: "apache configuration"
+       template:
+           src: "inventory.conf.j2"
+           dest: "/etc/httpd/conf.d/inventory.conf"
+           owner: root
+           group: root
+
+    # register execution result for template creation
+       register: apache_conf
+    # Instruction permettant de scruter le contenu de la variable
+     - debug: var=apache_conf
+     - name: "Restart apache service"
+       service: 
+           name: "httpd"
+           state: "restarted"
+       # restart if necessary
+       when: apache_conf.changed
+     - name: "Start apache service" 
+       service:
+           name: "httpd"
+           state: "started"
+           enabled: yes
+
+     - name: "install php packages" 
+       include: php-install.yml
+#       yum:
+#         name: "php,php-mysql,php-xml,php-mbstring,php-mcrypt,php-gd,php-intl"
+#           state: present
+#           # force boolean evaluation 
+#         when: php_install|bool
+#         # We need to restart apache 
+#         notify: [ "apache restart" ]
+
+
+
+
+
+
+
+
+
+      
