@@ -1,0 +1,8 @@
+[2020-05-18T16:20:40,819][INFO ][logstash.setting.writabledirectory] Creating directory {:setting=>"path.queue", :path=>"/home/bob/ansible3/playbook/roles/logstash-5.5.1/data/queue"}
+[2020-05-18T16:20:40,835][INFO ][logstash.setting.writabledirectory] Creating directory {:setting=>"path.dead_letter_queue", :path=>"/home/bob/ansible3/playbook/roles/logstash-5.5.1/data/dead_letter_queue"}
+[2020-05-18T16:20:40,931][INFO ][logstash.agent           ] No persistent UUID file found. Generating new UUID {:uuid=>"93f049ce-560f-4231-9f69-3dce08ee759b", :path=>"/home/bob/ansible3/playbook/roles/logstash-5.5.1/data/uuid"}
+[2020-05-18T16:20:41,735][INFO ][logstash.pipeline        ] Starting pipeline {"id"=>"main", "pipeline.workers"=>1, "pipeline.batch.size"=>125, "pipeline.batch.delay"=>5, "pipeline.max_inflight"=>125}
+[2020-05-18T16:20:41,795][INFO ][logstash.inputs.tcp      ] Automatically switching from json to json_lines codec {:plugin=>"tcp"}
+[2020-05-18T16:20:41,808][INFO ][logstash.inputs.tcp      ] Starting tcp input listener {:address=>"0.0.0.0:5000"}
+[2020-05-18T16:20:41,873][INFO ][logstash.pipeline        ] Pipeline main started
+[2020-05-18T16:20:42,032][INFO ][logstash.agent           ] Successfully started Logstash API endpoint {:port=>9600}
